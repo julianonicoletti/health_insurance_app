@@ -25,7 +25,7 @@ class healthInsurance:
                                             else 'between_1_2_year' if x == '1-2 Year'
                                             else 'below_1_year' )
 
-        # df2['vehicle_damage'] = df2['vehicle_damage'].apply(lambda x: 1 if x == 'Yes' else 0)
+        df2['vehicle_damage'] = df2['vehicle_damage'].apply(lambda x: 1 if x == 'Yes' else 0)
         return df2
     
     def data_preparation(self, df4):

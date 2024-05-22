@@ -25,7 +25,7 @@ class healthInsurance:
                                             else 'between_1_2_year' if x == '1-2 Year'
                                             else 'below_1_year' )
 
-        # df2['vehicle_damage'] = df2['vehicle_damage'].apply(lambda x: 1 if x == 'Yes' else 0)
+        df2['vehicle_damage'] = df2['vehicle_damage'].apply(lambda x: 1 if x == 'Yes' else 0)
         return df2
     
     def data_preparation(self, df4):
@@ -41,7 +41,9 @@ class healthInsurance:
         # df4 = pd.get_dummies(df4, prefix='vehicle_age', columns=['vehicle_age'], dtype=float)
                 
         # df4.loc[:, 'policy_sales_channel'] = df4['policy_sales_channel'].map(self.policy_sales_scaler)
-        
+        df4['annual_premium'] = df4['annual_premium'].astype(float)
+        df4['region_code'] = df4['region_code'].astype(int)
+        df4['policy_sales_channel'] = df4['policy_sales_channel'].astype(int)
         cols_selected = ['vintage', 'annual_premium', 'age',
                         'region_code', 'vehicle_damage',
                         'policy_sales_channel', 'previously_insured']
