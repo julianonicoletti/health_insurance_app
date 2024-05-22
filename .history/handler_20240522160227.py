@@ -30,7 +30,7 @@ def health_insurance_predict():
         # df2 = pipeline.feature_engineering(df1)
         
         #data preparation
-        df3 = pipeline.data_preparation(test_raw)
+        df3 = pipeline.data_preparation(df2)
         
         #prediction
         df_response = pipeline.get_prediction(model, test_raw, df3)
