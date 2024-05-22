@@ -12,7 +12,10 @@ class healthInsurance:
         self.region_code_scaler = pickle.load(open ('models/region_code_scaler.pkl', 'rb'))
         self.policy_sales_scaler = pickle.load(open ('models/policy_sales_scaler.pkl', 'rb'))
     
-    def data_cleaning (self, df1):     
+    def data_cleaning (self, df1):
+        
+
+        df1.columns = news_cols
         return df1
     
     def feature_engineering (self, df2):

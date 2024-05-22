@@ -12,10 +12,19 @@ class healthInsurance:
         self.region_code_scaler = pickle.load(open ('models/region_code_scaler.pkl', 'rb'))
         self.policy_sales_scaler = pickle.load(open ('models/policy_sales_scaler.pkl', 'rb'))
     
-    def data_cleaning (self, df1):     
+    def data_cleaning (self, df1):
+        news_cols = ['id', 'gender', 'age', 'driving_license', 'region_code',
+       'previously_insured', 'vehicle_age', 'vehicle_damage', 'annual_premium',
+       'policy_sales_channel', 'vintage', 'response']
+
+        df1.columns = news_cols
         return df1
     
     def feature_engineering (self, df2):
+        df2['vehicle_age'] = df2['vehicle_age'].apply(lambda x: 'over_2_years' if x== '> 2 Years'
+                                            else 'between_1_2_year' if x == '1-2 Year'
+                                            else 'below_1_year' )
+
         df2['vehicle_damage'] = df2['vehicle_damage'].apply(lambda x: 1 if x == 'Yes' else 0)
         return df2
     
